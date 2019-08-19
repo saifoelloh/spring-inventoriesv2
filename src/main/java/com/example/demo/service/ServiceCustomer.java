@@ -4,12 +4,15 @@ import com.example.demo.entity.Customer;
 import com.example.demo.repository.RepositoryCustomer;
 import com.example.demo.service.impl.InterfaceCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ServiceCustomer implements InterfaceCustomer {
-    @Autowired RepositoryCustomer repositoryCustomer;
+    @Autowired
+    RepositoryCustomer repositoryCustomer;
 
     @Override
     public List<Customer> findAll() {

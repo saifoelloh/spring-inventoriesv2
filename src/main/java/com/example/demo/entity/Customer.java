@@ -1,17 +1,13 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,9 +23,21 @@ public class Customer {
     private String email;
     private float discount;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn
+    private List<Purchase> purchases;
+
     @CreationTimestamp
     private LocalDateTime created_at;
 
     @UpdateTimestamp
     private LocalDateTime updated_at;
+
+    public Customer(String name, String address, String phone, String email, float discount) {
+        this.setName(name);
+        this.setAddress(address);
+        this.setPhone(phone);
+        this.setEmail(email);
+        this.setDiscount(discount);
+    }
 }

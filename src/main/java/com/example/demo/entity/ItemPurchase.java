@@ -2,8 +2,11 @@ package com.example.demo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Data
@@ -21,4 +24,12 @@ public class ItemPurchase {
     @MapsId("purchase_id")
     @JoinColumn(name = "purchase_id")
     private  Purchase purchase;
+
+    private int tota;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
 }

@@ -5,11 +5,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,10 +17,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private float purchasePrice;
-    private float sellingPrice;
-    private int stock;
-    private int sold;
+    private Float purchasePrice;
+    private Float sellingPrice;
+    private Integer stock;
+    private Integer sold;
+
+    @OneToMany(mappedBy = "item")
+    List<ItemPurchase> itemPurchases;
 
     @CreationTimestamp
     private LocalDateTime created_at;

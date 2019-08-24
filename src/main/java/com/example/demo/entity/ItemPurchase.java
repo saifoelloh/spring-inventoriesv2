@@ -25,7 +25,7 @@ public class ItemPurchase {
     @JoinColumn(name = "purchase_id")
     private  Purchase purchase;
 
-    private int tota;
+    private int total;
 
     @CreationTimestamp
     private LocalDateTime created_at;

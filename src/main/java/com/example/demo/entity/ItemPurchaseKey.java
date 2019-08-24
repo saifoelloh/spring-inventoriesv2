@@ -5,11 +5,12 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @Data
 @Embeddable
-public class ItemPurchaseKey {
+public class ItemPurchaseKey implements Serializable {
     @Column(name = "item_id")
     private Long itemId;
 
